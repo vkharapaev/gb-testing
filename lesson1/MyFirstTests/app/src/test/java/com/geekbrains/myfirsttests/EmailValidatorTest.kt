@@ -7,6 +7,21 @@ import org.junit.Test
 class EmailValidatorTest {
 
     @Test
+    fun emailValidator_NoDomain_ReturnsFalse() {
+        assertFalse(EmailValidator.isValidEmail("name@"))
+    }
+
+    @Test
+    fun emailValidator_OnlyDog_ReturnsFalse() {
+        assertFalse(EmailValidator.isValidEmail("@"))
+    }
+
+    @Test
+    fun emailValidator_DashInName_ReturnsTrue() {
+        assertTrue(EmailValidator.isValidEmail("name-name@test.ru"))
+    }
+
+    @Test
     fun emailValidator_CorrectEmailSimple_ReturnsTrue() {
         assertTrue(EmailValidator.isValidEmail("name@email.com"))
     }
